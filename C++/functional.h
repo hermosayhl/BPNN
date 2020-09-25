@@ -38,8 +38,8 @@ inline void display(const T& arr) {
 
 
 // 将两个 vector 同步打乱, assert 长度是否一致
-template<typename T>
-inline void co_shuffle(T& lhs, T& rhs) {
+template<typename A, typename B>
+inline void co_shuffle(A& lhs, B& rhs) {
 	unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
 	assert(lhs.size() == rhs.size());
     std::shuffle(lhs.begin (), lhs.end(), std::default_random_engine(seed));

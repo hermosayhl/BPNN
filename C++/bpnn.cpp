@@ -34,7 +34,7 @@ public:
 				auto loss_value = this->bpnn.loss_fn(output, label);
 				recoder.log(loss_value);
 				// 根据损失回传梯度, 参数 learning_rate 学习率
-				this->bpnn.backward();
+				this->bpnn.backward(6 * 1e-2);
 				// 输出一些信息
 				if((i + 1) % log_interval == 0) 
 					std::cout << i + 1 << "  is over...\tloss = " << recoder.log_output() << std::endl;
@@ -43,6 +43,8 @@ public:
 			auto accuracy = this->test();
 			// 保存当前模型
 			this->bpnn.save(epoch, accuracy);
+			// 可以打乱一下
+			co_shuffle(images, labels);
 		}
 	}
 
@@ -68,7 +70,7 @@ int main() {
 	std::cout << "compile success !" << std::endl;
 
 	Solver solver;
-	// solver.train();
-	solver.test("./checkpoints/epoch_0_accuracy_0.933000_weights.txt");
+	solver.train(10);
+	// solver.test("./checkpoints/epoch_0_accuracy_0.933000_weights.txt");
 	return 0;
 }
