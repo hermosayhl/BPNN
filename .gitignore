@@ -1,0 +1,21 @@
+# *.pkl
+*.bat
+*.exe
+*.pyc
+*.npy
+*.png
+*.jpg
+*.zip
+*.binary
+test.cpp
+C++/3rdparty/eigen_src/
+C++/3rdparty/Eigen/
+python/test.npy
+python/train.npy
+bpnnYHL.py
+bpnn_test.py
+/.idea/*
+train_for_mnist.pkl
+test_for_mnist.pkl
+/C++/quick_opencv.h
+quick_opencv.h
